@@ -1,5 +1,7 @@
 # Brigadier's Institute — Website Content Specification
 
+> **Updated 7 September 2026.** This document describes the original build. The site has since been revised on client feedback: the primary number changed to **+91 72078 47051**, the UPSC & TGPSC wing became **Banking Exams & SSC CGL**, the JEE wing became **Sainik School & Tuitions**, six AI-generated images were removed, all photographs were compressed (20 MB to 2.9 MB), faculty credentials were added, and a **Blog** section was added with two articles. Sections below marked with the old programme names are superseded by `js/content.js`, which is always the source of truth.
+
 Complete content and structure of the Brigadier's Defence & Skill Institute website.
 Every heading, paragraph, label, link and image slot on the live site is recorded here.
 

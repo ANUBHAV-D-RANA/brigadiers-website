@@ -49,7 +49,7 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
           <div class="course-row__tags">${(p.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
           <div class="course-row__ctas">
             <a href="contact.html" class="btn${p.accent ? '' : ' btn--ghost'}">Enquire Now ⟶</a>
-            <a href="https://wa.me/919701147051?text=${encodeURIComponent("Hello, I want to enquire about the " + p.title + " programme at Brigadier's Institute.")}" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">WhatsApp</a>
+            <a href="https://wa.me/917207847051?text=${encodeURIComponent("Hello, I want to enquire about the " + p.title + " programme at Brigadier's Institute.")}" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">WhatsApp</a>
           </div>
         </div>
       </article>`).join('');
@@ -88,6 +88,27 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
         <div class="plate__dept">${esc(f.dept)}</div>
         <h3>${esc(f.name)}</h3>
         <p>${esc(f.text)}</p>
+      </article>`).join('');
+  }
+
+  /* blog index */
+  const blogGrid = document.getElementById('blogGrid');
+  if (blogGrid && C.blog) {
+    blogGrid.innerHTML = C.blog.map((b, i) => `
+      <article class="pcard glass glass--hov" data-a data-d="${(i * 0.08).toFixed(2)}">
+        <a class="pcard__media" href="${esc(b.url)}">
+          <img src="${esc(b.image)}" alt="${esc(b.title)}" loading="lazy">
+          <span class="pcard__cat">${esc(b.category)}</span>
+        </a>
+        <div class="pcard__body">
+          <div class="pcard__meta">${esc(b.dateLabel)} <i>·</i> ${esc(b.read)}</div>
+          <h2><a href="${esc(b.url)}">${esc(b.title)}</a></h2>
+          <p>${esc(b.excerpt)}</p>
+          <div class="pcard__foot">
+            <span class="pcard__by">${esc(b.author)}</span>
+            <span class="pcard__go">Read <span class="arr">⟶</span></span>
+          </div>
+        </div>
       </article>`).join('');
   }
 
@@ -409,6 +430,6 @@ if (form) form.addEventListener('submit', e => {
   const msg = `Enquiry from the website%0A%0AName: ${d.get('name') || '-'}%0APhone: ${d.get('phone') || '-'}%0AEmail: ${d.get('email') || '-'}%0ACity: ${d.get('city') || '-'}%0AProgramme: ${d.get('programme') || '-'}%0AMessage: ${d.get('message') || '-'}`;
   const t = document.getElementById('toast');
   if (t) { t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 5000); }
-  window.open(`https://wa.me/919701147051?text=${msg}`, '_blank', 'noopener');
+  window.open(`https://wa.me/917207847051?text=${msg}`, '_blank', 'noopener');
   form.reset();
 });
