@@ -80,7 +80,7 @@ window.BDSI_CONTENT = {
     { image: 'assets/b5.jpg', caption: 'Faculty Conducting Class' },
     { image: 'assets/b6.jpg', caption: 'Students in Session' },
     { image: 'assets/why-academic.jpg', caption: 'Classroom in Session' },
-    { image: 'assets/banner1.jpg', caption: 'Institute Frontage' }
+    { image: 'assets/b2.jpg', caption: 'Classroom — Dr. A. S. Rao Nagar' }
   ],
 
   /* ---------- FACULTY CREDENTIALS (leadership.html) ------- */
