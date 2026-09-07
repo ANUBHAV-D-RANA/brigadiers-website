@@ -836,3 +836,23 @@ body.cur-hover .cur-ring{width:66px;height:66px;opacity:.45;}
   .post p{font-size:16.2px;}
   .post p.stand{font-size:18px;}
 }
+
+/* ---------------- contact: social row ---------------- */
+.c-social{padding:20px 22px 22px;border-radius:16px;}
+.c-social__head{display:flex;flex-direction:column;gap:5px;margin-bottom:16px;}
+.c-social__head b{font-family:var(--font-d);font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);font-weight:600;}
+.c-social__head span{font-family:var(--font-m);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);}
+.c-social__row{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:9px;}
+.c-social__row a{
+  display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px 11px;border-radius:12px;
+  background:rgba(74,85,51,.055);border:1px solid var(--line-2);
+  transition:transform .35s var(--ease-o),background .3s,border-color .3s;
+}
+.c-social__row a:hover{transform:translateY(-4px);background:var(--olive);border-color:var(--olive);}
+.c-social__row svg{width:22px;height:22px;fill:none;stroke:var(--olive);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s;}
+.c-social__row a:hover svg{stroke:#fff;}
+.c-social__row span{font-family:var(--font-m);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--mut-2);transition:color .3s;white-space:nowrap;}
+.c-social__row a:hover span{color:#fff;}
+.c-social__row a.is-wa svg{stroke:#25823f;}
+.c-social__row a.is-wa:hover{background:#25823f;border-color:#25823f;}
+@media(max-width:420px){.c-social__row{grid-template-columns:repeat(3,1fr);}}
