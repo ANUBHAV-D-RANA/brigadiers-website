@@ -1,0 +1,40 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/defence-coaching", "destination": "/programmes.html", "permanent": true },
+    { "source": "/tspsc-coaching", "destination": "/programmes.html", "permanent": true },
+    { "source": "/tgpsc-coaching", "destination": "/programmes.html", "permanent": true },
+    { "source": "/study-zone", "destination": "/programmes.html", "permanent": true },
+    { "source": "/tuition-centre", "destination": "/programmes.html", "permanent": true },
+    { "source": "/tuitions", "destination": "/programmes.html", "permanent": true },
+    { "source": "/courses", "destination": "/programmes.html", "permanent": true },
+    { "source": "/programmes", "destination": "/programmes.html", "permanent": true },
+    { "source": "/about", "destination": "/about.html", "permanent": true },
+    { "source": "/about-us", "destination": "/about.html", "permanent": true },
+    { "source": "/leadership", "destination": "/leadership.html", "permanent": true },
+    { "source": "/faculty", "destination": "/leadership.html", "permanent": true },
+    { "source": "/gallery", "destination": "/gallery.html", "permanent": true },
+    { "source": "/blog", "destination": "/blog.html", "permanent": true },
+    { "source": "/contact", "destination": "/contact.html", "permanent": true },
+    { "source": "/contact-us", "destination": "/contact.html", "permanent": true },
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/index", "destination": "/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}
