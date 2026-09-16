@@ -424,12 +424,43 @@ if (lbox) {
 
 /* ---------- enquiry form → WhatsApp handoff + toast ---------- */
 const form = document.getElementById('regForm');
-if (form) form.addEventListener('submit', e => {
+const ENQUIRY_EMAIL = 'directorbrigadier@gmail.com';
+if (form) form.addEventListener('submit', async e => {
   e.preventDefault();
   const d = new FormData(form);
-  const msg = `Enquiry from the website%0A%0AName: ${d.get('name') || '-'}%0APhone: ${d.get('phone') || '-'}%0AEmail: ${d.get('email') || '-'}%0ACity: ${d.get('city') || '-'}%0AProgramme: ${d.get('programme') || '-'}%0AMessage: ${d.get('message') || '-'}`;
+  const btn = form.querySelector('button[type="submit"]');
   const t = document.getElementById('toast');
-  if (t) { t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 5000); }
-  window.open(`https://wa.me/917207847051?text=${msg}`, '_blank', 'noopener');
-  form.reset();
+  const say = (m) => { if (t) { t.textContent = m; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 5000); } };
+
+  const payload = {
+    _subject: `Website enquiry - ${d.get('name') || 'No name'}`,
+    _template: 'table',
+    _captcha: 'false',
+    Name: d.get('name') || '-',
+    Phone: d.get('phone') || '-',
+    Email: d.get('email') || '-',
+    City: d.get('city') || '-',
+    Programme: d.get('programme') || '-',
+    Message: d.get('message') || '-'
+  };
+
+  if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Sending…'; }
+  try {
+    const r = await fetch(`https://formsubmit.co/ajax/${ENQUIRY_EMAIL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!r.ok) throw new Error('send failed');
+    say('Enquiry sent — we will call you back');
+    form.reset();
+  } catch (err) {
+    // email could not be sent from the browser: hand off to WhatsApp instead
+    say('Opening WhatsApp instead…');
+    const msg = `Enquiry from the website%0A%0AName: ${d.get('name') || '-'}%0APhone: ${d.get('phone') || '-'}%0AEmail: ${d.get('email') || '-'}%0ACity: ${d.get('city') || '-'}%0AProgramme: ${d.get('programme') || '-'}%0AMessage: ${d.get('message') || '-'}`;
+    window.open(`https://wa.me/917207847051?text=${msg}`, '_blank', 'noopener');
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Send Enquiry ⟶'; }
+  }
 });
+
